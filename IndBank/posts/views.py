@@ -35,7 +35,7 @@ def add_user(request):
             new_user = User.objects.create_user(**form.cleaned_data)
             login(request,new_user)
             # redirect, or however you want to get to the main view
-            return render(request,'posts/main.html')
+            return HttpResponseRedirect(reverse('posts:homepage',kwargs={'username':request.user.username}))
     else:
         form = UserForm() 
 
@@ -68,4 +68,10 @@ def homepage(request,username):
     cxt = {'user':user
 }
     return render(request,'posts/user.html',cxt)
+
+def profile(request,username):
+    user = User.objects.get(username=username)
+    cxt = {'user':user
+}
+    return render(request,'posts/user_profile.html',cxt)
 
