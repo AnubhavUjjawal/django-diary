@@ -1,0 +1,20 @@
+{%extends 'posts/home.html'%}
+{%block user%}
+    <div style="padding:30px 0px 30px 10px; margin-bottom:50px;" class="bg-info text-primary">
+    <span style="font-family:'Righteous'; font-size:40px;">Welcome to</span>
+    <span style="font-family:'Audiowide'; font-size:30px;">&emsp;{{user.username}}</span>
+    <span style="font-family:'Righteous'; font-size:40px;">profile</span>
+    
+    
+    </div>
+    <div class="bg-info" style="padding: 10px; margin-bottom:20px;">
+    
+    </div>
+    {%for post in user.posts_set.all%}
+    
+    <div style="font-family:'Fresca'; padding:10px; margin:0px 10px 20px 10px; " class="bg-info">
+        <h3 style="font-family: 'Ubuntu Mono'; font-size:30px">{{post.post_title}}</h3><br/>
+        <span style="font-size:20px;">{{post.post_body}}</span>
+    </div>
+    {%endfor%}
+{%endblock%}
